@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { StatusBar } from "expo-status-bar";
 import { Button, Input, Image } from "react-native-elements";
+import { KeyboardAvoidingView } from "react-native";
 
 const LoginScreen = () => {
   const [email, setEmail] = useState("");
@@ -10,7 +11,7 @@ const LoginScreen = () => {
   const signIn = {};
 
   return (
-    <View style={styles.container}>
+    <KeyboardAvoidingView behavior="padding" style={styles.container}>
       <StatusBar style="light" />
       <Image
         source={{
@@ -38,14 +39,23 @@ const LoginScreen = () => {
 
       <Button containerStyle={styles.button} onPress={signIn} title="Login" />
       <Button containerStyle={styles.button} type="outline" title="Register" />
-    </View>
+    </KeyboardAvoidingView>
   );
 };
 
 export default LoginScreen;
 
 const styles = StyleSheet.create({
-  container: {},
-  inputContainer: {},
-  button: {},
+  container: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  inputContainer: {
+    width: 300,
+  },
+  button: {
+    width: 200,
+    marginTop: 10,
+  },
 });
